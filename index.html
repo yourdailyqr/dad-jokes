@@ -890,7 +890,7 @@ function hidePunchline() {
 }
 
 
-// ── PURE ROLLING 24-HOUR SCAN GATE ──
+// ── ROLLING 72-HOUR INACTIVITY GATE ──
 (function() {
   const KEY = 'ydqr_dadjoke_scan_ts';
   const now = Date.now();
@@ -901,19 +901,18 @@ function hidePunchline() {
     document.getElementById('app').style.display = 'none';
   }
 
-  if (stored) {
+  if (!stored) {
+    // Rule 1: No stamp — fresh scan. Set stamp, show content.
+    localStorage.setItem(KEY, String(now));
+  } else {
     const elapsed = now - parseInt(stored, 10);
     if (elapsed >= 72 * 60 * 60 * 1000) {
-      // 24+ hours have passed — show gate, then reset clock
-      // so the VERY NEXT open is free
-      localStorage.setItem(KEY, String(now));
+      // Rule 3: 72+ hours inactive — clear stamp, show gate.
+      localStorage.removeItem(KEY);
       showGate();
       return;
     }
-    // Less than 24 hours — no gate, reset clock
-    localStorage.setItem(KEY, String(now));
-  } else {
-    // No record — fresh scan, start the clock
+    // Rule 2: Less than 72 hours — reset stamp, show content.
     localStorage.setItem(KEY, String(now));
   }
 })();
