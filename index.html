@@ -219,15 +219,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(4px, 1.5vw, 8px);
+    gap: clamp(16px, 5vw, 28px);
   }
 
   #nav {
     display: flex;
     align-items: center;
-    gap: clamp(8px, 3vw, 16px);
     width: 100%;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .nav-btn {
@@ -276,14 +275,14 @@
     font-size: clamp(1.1rem, 5vw, 1.8rem);
     color: #3a3a3a;
     letter-spacing: 0.06em;
-    min-width: 120px;
+    flex: 1;
     text-align: center;
   }
 
   #site-link {
     font-family: 'Comic Neue', cursive;
     font-weight: 700;
-    font-size: clamp(1.1rem, 5vw, 1.8rem);
+    font-size: clamp(0.9rem, 3.5vw, 1.2rem);
     color: #3a3a3a;
     text-decoration: none;
     letter-spacing: 0.02em;
