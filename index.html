@@ -245,6 +245,9 @@
     -webkit-tap-highlight-color: transparent;
     min-width: clamp(44px, 12vw, 60px);
     text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   .nav-btn:disabled {
     background: #d0d0d0;
@@ -254,6 +257,19 @@
     cursor: default;
   }
   .nav-btn:not(:disabled):active { opacity: 0.75; }
+  .nav-arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: clamp(6px, 2.2vw, 9px) solid transparent;
+    border-bottom: clamp(6px, 2.2vw, 9px) solid transparent;
+  }
+  .nav-arrow.left {
+    border-right: clamp(9px, 3vw, 13px) solid currentColor;
+  }
+  .nav-arrow.right {
+    border-left: clamp(9px, 3vw, 13px) solid currentColor;
+  }
 
   #nav-label {
     font-family: 'Bangers', cursive;
@@ -397,9 +413,9 @@
 
     <div id="footer">
       <div id="nav">
-        <button class="nav-btn" id="btn-prev" onclick="navigate(-1)">◀</button>
+        <button class="nav-btn" id="btn-prev" onclick="navigate(-1)"><span class="nav-arrow left"></span></button>
         <div id="nav-label">TODAY</div>
-        <button class="nav-btn" id="btn-next" disabled onclick="navigate(1)">▶</button>
+        <button class="nav-btn" id="btn-next" disabled onclick="navigate(1)"><span class="nav-arrow right"></span></button>
       </div>
       <a id="site-link" href="https://www.yourdailyqr.com" target="_blank">www.yourdailyqr.com</a>
     </div>
